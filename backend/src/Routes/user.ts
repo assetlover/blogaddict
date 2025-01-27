@@ -16,6 +16,7 @@ userRouter.post("/signup", async (c) => {
   }).$extends(withAccelerate());
   try {
     const body = await c.req.json();
+    console.log(body);
     const user = await prisma.user.create({
       data: {
         email: body.email,
@@ -29,6 +30,7 @@ userRouter.post("/signup", async (c) => {
       token,
     });
   } catch (e) {
+    console.log(e);
     c.status(403);
     return c.json({ msg: "Invalid" });
   }
