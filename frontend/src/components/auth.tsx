@@ -15,12 +15,10 @@ export const Auth = ({ type = "signup" || "signin" }) => {
       console.log(inputValues);
       const response = await axios.post(
         `${BACKEND_URL}/api/v1/user/${type === "signin" ? "signin" : "signup"}`,
-        {
-          inputValues,
-        }
+        inputValues
       );
-      const token = response.data;
-      localStorage.setItem("token", "Bearer " + token);
+      const tokenObj = response.data;
+      localStorage.setItem("token", "Bearer " + tokenObj.token);
       const navigate = useNavigate();
       navigate("/blogs");
     } catch (e) {}
