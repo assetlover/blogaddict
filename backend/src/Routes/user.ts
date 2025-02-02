@@ -42,10 +42,11 @@ userRouter.post("/signin", async (c) => {
   }).$extends(withAccelerate());
   try {
     const body = await c.req.json();
+    const userData = { username: body.username, password: body.password };
     const user = await prisma.user.findUnique({
       where: {
-        username: body.username,
-        password: body.password,
+        username: userData.username,
+        password: userData.password,
       },
     });
     if (!user) {

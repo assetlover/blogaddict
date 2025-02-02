@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { BACKEND_URL } from "../config";
 
 export const Auth = ({ type = "signup" || "signin" }) => {
+  const navigate = useNavigate();
   const [inputValues, setInputValues] = useState({
     username: "",
     name: "",
@@ -19,9 +20,11 @@ export const Auth = ({ type = "signup" || "signin" }) => {
       );
       const tokenObj = response.data;
       localStorage.setItem("token", "Bearer " + tokenObj.token);
-      const navigate = useNavigate();
+      console.log(1);
       navigate("/blogs");
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
   }
   return (
     <div className=" md:h-screen bg-white flex flex-col content-end  justify-center items-center px-18">
@@ -76,7 +79,7 @@ export const Auth = ({ type = "signup" || "signin" }) => {
         ) : null}
         <LabelledInputs
           label="Password"
-          placeholder="12345678"
+          placeholder="Password Here"
           type="password"
           onChange={(e) => {
             setInputValues((c) => ({
