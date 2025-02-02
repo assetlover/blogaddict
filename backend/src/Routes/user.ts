@@ -36,7 +36,7 @@ userRouter.post("/signup", async (c) => {
   }
 });
 
-userRouter.get("/signin", async (c) => {
+userRouter.post("/signin", async (c) => {
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate());
@@ -44,7 +44,7 @@ userRouter.get("/signin", async (c) => {
     const body = await c.req.json();
     const user = await prisma.user.findUnique({
       where: {
-        email: body.email,
+        username: body.username,
         password: body.password,
       },
     });
@@ -57,6 +57,7 @@ userRouter.get("/signin", async (c) => {
       token,
     });
   } catch (e) {
+    console.log(e);
     c.status(411);
     return c.json({ msg: "Invalid" });
   }

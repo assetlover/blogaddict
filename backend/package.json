@@ -8,7 +8,7 @@
     "@prisma/client": "^6.1.0",
     "@prisma/extension-accelerate": "^1.2.1",
     "hono": "^4.6.16",
-    "prisma": "^6.2.1",
+    "prisma": "^6.3.0",
     "rollup-plugin-node-polyfills": "^0.2.1",
     "stoppable": "^1.1.0"
   },
