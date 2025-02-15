@@ -8,12 +8,12 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    "moduleResolution": "node", // Changed from "bundler"
     "allowImportingTsExtensions": true,
-    "isolatedModules": true,
+    "isolatedModules": false, // Optional: set to false for testing
     "moduleDetection": "force",
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "react-jsx", // Keep "react-jsx" if you're using React 17+
 
     /* Linting */
     "strict": true,

@@ -99,12 +99,11 @@ blogRouter.get("/:id", async (c) => {
         },
       },
     });
-    console.log(blog);
     c.status(200);
     return c.json({
       title: blog?.title,
       content: blog?.content,
-      authorName: blog?.author.name,
+      author: { name: blog?.author.name },
       id: blog?.id,
     });
   } catch (e) {
